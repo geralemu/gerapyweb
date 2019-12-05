@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>portafolio | {% block title %} {% endblock %}</title>
+	<!-- Archivos estaticos: -- >
+	{% load static %}
+	
+	  <!--Icono-->
+        <link rel="icon" type="text/css" href="{% static 'core/media/img/4.png'%}">
+        <!--Boostrap Estilos-->
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.css'%}">
+        <!--hoja de Estilo FontAwesome-->
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/all.css'%}" >
+        <!--Mis Estilos-->
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/estilo.css'%}" >
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       
+	
+
+
+</head>
+<body>
+
+<!-- Contenido html, esta será nuestra base para poder mostrar el contenido -- >
+{% block content %} {% endblock %}
+
+
+<!-- Javascripts : 1.jquery 2.popper 3.boostrap 4.fontAwesome -- >
+
+<script src="{% static 'core/js/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'core/js/popper.min.js' %}"></script>
+<script src="{% static 'core/js/boostrap.js' %}"></script>
+<script src="{% static 'core/js/all.js' %}"></script>
+
+	
+</body>
+</html>

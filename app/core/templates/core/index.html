@@ -1,0 +1,129 @@
+
+<!-- incluimos la plantilla base a nuestro html -- >
+	{% extends 'core/base.html' %}
+<!-- marcamos el titulo que queremos ver en la pagina -- >
+    {% block title %} El brochure de los trabajadores {% endblock %}
+<!-- Marcamos el inicio del contenido -- >
+	{% block content %}
+<!-- archivos estaticos -- >
+    {% load static %}
+
+	<!-- Jumbotron -->
+	<div class="jumbotron bfondo">
+		<!-- Menu -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+		  <a class="navbar-brand" href="index.html"><img class="col-sm-2 img-fluid" src="{% static 'core/media/img/1.png' %}"></a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      
+		    </ul>
+		    <ul class="navbar-nav my-2 my-lg-0">
+		      <li class="nav-item active">
+		        <a class="nav-link text-light" href="about.html"><i class="fas fa-users"></i>&nbsp;Nosotros <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item active">
+		        <a class="nav-link text-light" href="#"><i class="fas fa-comment-alt"></i>&nbsp;Contácto <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item active">
+		        <a class="nav-link text-light" href="#"><i class="fas fa-user"></i>&nbsp;Ingreso<span class="sr-only">(current)</span></a>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
+	  <h1 class="display-3 text-light active">PortFol&o </h1>
+	  <p class="lead text-light active">El brochure de los Desarrolladores</p>
+	  <hr class="my-4">
+	  <p></p>
+	  <a class="btn btn-primary btn-lg" href="#" role="button">Registrate!!</a>
+	</div>
+
+	<section class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h3 class="text-center display-5">Creado en:</h3>
+				<img class="col-sm-12 img-fluid" src="{% static 'core/media/img/django.png' %}">
+				<h5 class="mb-0 text-center">Versión 2.2 <br><em>El framework de los perfeccionistas</em></h5>
+			</div>
+			<div class="col-sm-4">
+				<h3 class="text-center display-5">Almacenando en:</h3>
+				<img class="col-sm-12 img-fluid" src="{% static 'core/media/img/mongoDB.png' %}">
+				<h5 class="mb-0 text-center">Versión 4.0<br><em>La base de datos NoSql más usada por desarrolladores</em></h4>
+			</div>
+			<div class="col-sm-4">
+				<h3 class="text-center display-5">Maquetado con</h3>
+				<img class="col-sm-12 img-fluid" src="{% static 'core/media/img/bootstrap-4.png'%}">
+				<h5 class="mb-0 text-center">Version 4.3<br><em>El framework mas popular de html - css -js</em></h5>
+			</div>
+		</div>
+	</section>
+
+	<section class="container-fluid mt-2 bg-dark">
+		<div class="row">
+			
+			<!-- Sección de Contácto -->
+			<section class="col-md-12 row mt-2">
+				<div class="col-md-6">
+					<h4 class="text-light">Encuentranos en:</h4>
+					<iframe src="{% static 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7164264954845!2d-75.57092518598358!3d6.3009425954397456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442f25d6670d4d%3A0x8043999e5e767b96!2sCentro+de+Tecnolog%C3%ADa+de+la+Manufactura+Avanzada+-+SENA!5e0!3m2!1ses!2sco!4v1557230638851!5m2!1ses!2sco' %}" width="628" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<h4 class="text-light">Tambien en nuestras comunidades:</h4>
+					<h1 class="text-light text-center">
+						<i class="fab fa-github" title="GitHub"></i>&nbsp;<i class="fab fa-stack-overflow" title="Stack-Overflow"></i>&nbsp;<i class="fab fa-slack" title="Slack"></i>
+					</h1>
+				</div>
+				<div class="col-md-6">
+					<h4 class="text-light">Dejanos un Mensaje</h4>
+					<form class="row text-light" method="POST">
+
+						<!-- Nos aseguramos que el formulario se envia de forma segura -->
+					  {% csfr_token %}
+					  <div class="form-group col-sm-6">
+					    <label for="exampleFormControlInput1">Correo Electrónico</label>
+					    {{formulario.email}}
+					  </div>
+
+					  <div class="form-group col-sm-6">
+					    <label for="exampleFormControlSelect1">Tipo de Atención Requerida</label>
+					   {{formulario.tipom}}
+					  </div>
+
+					  <div class="form-group col-sm-12">
+					    <label for="exampleFormControlInput1">Nombre</label>
+					    {{formulario.nombre}}
+					  </div>
+
+					  <div class="form-group col-sm-12">
+					    <label for="exampleFormControlTextarea1">Mensaje:</label>
+					    {{formulario.msj}}
+					  </div>
+					  {% if 'Ok' in request.GET %}
+					      <span class="col-sm-12 alert alert-success mx-2" role="alert">
+					      	Hemos enviado tu mensaje!
+					      </span>
+					   {% else %}
+
+					  <div class="form-group col-sm-12 text-right">
+					  	<button type="submit" class="btn btn-info col-md-6">Enviar</button>
+					  </div>
+
+					  {% endif %}
+
+					</form>
+				</div>
+			</section>
+		</div>
+	</section>
+
+
+	<!-- Javascripts : 1.jquery 2.popper 3.bootstrap 4.fontawesome-->
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8iX+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
+<!-- Marcamos el final del contenido -->
+	{% endblock %}
